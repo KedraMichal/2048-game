@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+<table style="width:100%"> 
+    {% for item in board %}
+    <tr>
+        {% for i in item %}
+
+        <th>{{ i }}</th>
+        {% endfor %}
+
+    <tr>
+    {% endfor %}
+</table>
+</p>
+    <p class="lead" style="text-align:center" >{{ gameover }}</p>
+    {% if continue_game == False %}
+        <button><a href="{{ url_for('main') }}">Play again</a></button>
+    {% endif %}
+
+    {% if continue_game == True %}
+        </div>
+            <div >
+                <button><a href="{{ url_for('move', direction='left') }}">w lewo</a></button>
+            </div>
+            <div >
+                <button><a href="{{ url_for('move', direction='right') }}">w prawo</a></button>
+            </div>
+            <div >
+                <button><a href="{{ url_for('move', direction='up') }}">gora</a></button>
+            </div>
+            <div >
+                <button><a href="{{ url_for('move', dircetion='down') }}">dol</a></button>
+            </div>
+
+        </div>
+
+    {% endif %}
+</body>
+</html>
