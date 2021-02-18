@@ -3,28 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+
+table, th, td {
+  margin-left:auto;
+  margin-right:auto;
+  border:3px;
+  border-style: solid;
+}
+
+table {
+   background-color: #bbada0;
+   border-color: #bbada0;
+}
+
+td, th {
+  font-family: "Helvetica";
+  font-size: 30px;
+  color: #776e65;
+  background-color: #eee4da;
+  border-color: #bbada0;
+  padding: 30px;
+}
+
+
+    </style>
 </head>
 <body>
-<p>
-<table style="width:100%"> 
+<div>Score {{ score }}</div>
+<table> 
     {% for item in board %}
     <tr>
         {% for i in item %}
-
         <th>{{ i }}</th>
         {% endfor %}
 
     <tr>
     {% endfor %}
 </table>
-</p>
+
     <p class="lead" style="text-align:center" >{{ gameover }}</p>
     {% if continue_game == False %}
-        <button><a href="{{ url_for('main') }}">Play again</a></button>
+        <button class="game"><a href="{{ url_for('main') }}">Play again</a></button>
     {% endif %}
 
     {% if continue_game == True %}
-        </div>
+        <div style="text-align:center">
             <div >
                 <button><a href="{{ url_for('move', direction='left') }}">w lewo</a></button>
             </div>
@@ -35,7 +59,7 @@
                 <button><a href="{{ url_for('move', direction='up') }}">gora</a></button>
             </div>
             <div >
-                <button><a href="{{ url_for('move', dircetion='down') }}">dol</a></button>
+                <button><a href="{{ url_for('move', direction='down') }}">dol</a></button>
             </div>
 
         </div>
