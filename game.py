@@ -1,15 +1,16 @@
 import random
+import copy
 
 
-start_board = [[2, 2, 4, 4], [0, 4, 2, 2], [0, 2, 2, 0], [0, 2, 0, 2]]
-print(start_board[2][1])
+def generate_start_board():
+    random_x, random_y = random.randint(0, 3), random.randint(0, 3)
+    random_x2, random_y2 = random.randint(0, 3), random.randint(0, 3)
+    print(random_x, random_y)
+    print(random_x2, random_y2)
+    board = [4 * [0] for _ in range(4)]
+    board[random_x][random_y], board[random_x2][random_y2] = 2, 2
 
-
-def display_board(board):
-    for row in board:
-        for value in row:
-            print(value, end='|')
-        print()
+    return board
 
 
 def move_to_left(board):
@@ -92,26 +93,11 @@ def random_spawn(board):
     else:
         return False  # game over
 
-def game(board):
-    display_board(board)
-    while True:
-        move = input("w a s d ")
-        if move == "w":
-            merge_up(board)
-            random_spawn(board)
-            display_board(board)
-        if move == "a":
-            merge_left(board)
-            random_spawn(board)
-            display_board(board)
-        if move == "s":
-            merge_down(board)
-            random_spawn(board)
-            display_board(board)
-        if move == "d":
-            merge_right(board)
-            random_spawn(board)
-            display_board(board)
 
+def check_if_game_is_over(board):
+    board_copy = copy.deepcopy(board)
+    merge_left(board_copy), merge_right(board_copy), merge_down(board_copy), merge_down(board_copy)
+    if board_copy == board:
+        return True
+    return False
 
-#game(start_board)

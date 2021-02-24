@@ -16,6 +16,9 @@ table {
    background-color: #bbada0;
    border-color: #bbada0;
 }
+th {
+    width: 30px;
+}
 
 td, th {
   font-family: "Helvetica";
@@ -26,44 +29,48 @@ td, th {
   padding: 30px;
 }
 
+.but {
+  width: 10%;
+  margin-left: 45%;
+  margin-right: 45%;
+  margin-top: 5px;
+  font-size:20px;
+}
+
+.text {
+  text-align:center;
+  font-size:20px;
+}
 
     </style>
 </head>
 <body>
-<div>Score {{ score }}</div>
+<div class="text">Score: {{ score }}</div>
+
+{% if continue_game == true %}
+    <meta http-equiv="refresh" content="0.3" />
+{% endif %}
+
 <table> 
     {% for item in board %}
     <tr>
         {% for i in item %}
         <th>{{ i }}</th>
         {% endfor %}
-
     <tr>
     {% endfor %}
 </table>
 
-    <p class="lead" style="text-align:center" >{{ gameover }}</p>
-    {% if continue_game == False %}
-        <button class="game"><a href="{{ url_for('main') }}">Play again</a></button>
-    {% endif %}
+<p class="text" >{{ gameover }}</p>
 
-    {% if continue_game == True %}
-        <div style="text-align:center">
-            <div >
-                <button><a href="{{ url_for('move', direction='left') }}">w lewo</a></button>
-            </div>
-            <div >
-                <button><a href="{{ url_for('move', direction='right') }}">w prawo</a></button>
-            </div>
-            <div >
-                <button><a href="{{ url_for('move', direction='up') }}">gora</a></button>
-            </div>
-            <div >
-                <button><a href="{{ url_for('move', direction='down') }}">dol</a></button>
-            </div>
+<button class="but"><a href="{{ url_for('main') }}">Reset board</a></button>
 
+{% if continue_game == False %}
+<div>
+            <div >
+                <button class="but"><a href="{{ url_for('move') }}">Start the game</a></button>
+            </div>
         </div>
-
-    {% endif %}
+{% endif %}
 </body>
 </html>
