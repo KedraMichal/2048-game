@@ -6,7 +6,7 @@
     <style>
 
 table, th, td {
-  margin-left:auto;
+  margin-left:33%;
   margin-right:auto;
   border:3px;
   border-style: solid;
@@ -29,28 +29,72 @@ td, th {
   padding: 30px;
 }
 
+.dev {
+  margin-left: 33%;
+
+}
+
+.dev2 {
+  color: red;
+  font-size: 15px;
+  color: white;
+  background: #bbada0;
+  padding: 10px;
+  margin-right: 35.5%;
+  float:right
+}
+
+.margin-span {
+  margin-top: 30px;
+  margin-down: 15px;
+}
+
 .but {
-  width: 10%;
-  margin-left: 45%;
-  margin-right: 45%;
-  margin-top: 5px;
-  font-size:20px;
+  color: red;
+  font-size: 15px;
+  color: white;
+  background: #8f7a66;
+  text-decoration: none;
+  border: none;
+  padding: 10px;
 }
 
 .text {
+  margin-left: 35%;
+  margin-right: 38%;
+  font-size: 15px;
+  margin-top: 30px;
+  font-family: "Helvetica";
   text-align:center;
-  font-size:20px;
+  color: #bbada0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  background: #8f7a66;
 }
 
     </style>
 </head>
-<body>
-<div class="text">Score: {{ score }}</div>
+<body style="background:#faf8ef">
+
 
 {% if continue_game == true %}
     <meta http-equiv="refresh" content="0.3" />
 {% endif %}
 
+<div class="margin-span">
+    <span class="dev">
+        <button class="but"><a href="{{ url_for('main') }}">Reset board</a></button>
+        {% if continue_game == False %}
+            <button class="but"><a href="{{ url_for('move') }}">Start the game</a></button>
+        {% endif %}
+        <span class="dev2">Score: {{ score }}</span>
+    </span>
+</div>
+
+<p class="text" >{{ gameover }}</p>
 <table> 
     {% for item in board %}
     <tr>
@@ -61,16 +105,7 @@ td, th {
     {% endfor %}
 </table>
 
-<p class="text" >{{ gameover }}</p>
+<p class="text"><b>HOW TO PLAY:</b> Click "Start the game" and use your a, w, s, d keys to move the squares. Squares with the same number merge into one!</p>
 
-<button class="but"><a href="{{ url_for('main') }}">Reset board</a></button>
-
-{% if continue_game == False %}
-<div>
-            <div >
-                <button class="but"><a href="{{ url_for('move') }}">Start the game</a></button>
-            </div>
-        </div>
-{% endif %}
 </body>
 </html>

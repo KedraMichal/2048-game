@@ -95,6 +95,8 @@ def random_spawn(board):
 
 
 def check_if_game_is_over(board):
+    if 0 in [elem for sublist in board for elem in sublist]:
+        return False
     board_copy = copy.deepcopy(board)
     merge_left(board_copy), merge_right(board_copy), merge_down(board_copy), merge_down(board_copy)
     if board_copy == board:
