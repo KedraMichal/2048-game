@@ -1,0 +1,116 @@
+table, th, td {
+  margin-left: 33%;
+  margin-right: auto;
+  border: 3px;
+  border-style: solid;
+}
+
+table {
+   background-color: #bbada0;
+   border-color: #bbada0;
+}
+
+th {
+    width: 30px;
+}
+
+td, th {
+  font-family: "Helvetica";
+  font-size: 30px;
+  color: #776e65;
+  border-color: #bbada0;
+  padding: 30px;
+}
+
+.two {
+  background-color: #eee4da;
+}
+
+.four {
+  background-color: #eee1c9;
+}
+
+.eight {
+  background-color: #f3b27a;
+  color: white;
+}
+
+.sixteen {
+  background-color: #f69664;
+  color: white;
+}
+
+.thirty-two {
+  background-color: #f77b5f;
+  color: white;
+}
+
+.sixty-four {
+  background-color: #f75f3b;
+  color: white;
+}
+
+.one-hundred-twenty-eight {
+  background-color: #edd173;
+}
+
+.two-hundred-fifty-six {
+  background-color: #edcc62;
+  color: white;
+}
+
+.zero {
+  background-color: #cdc1b4;
+  color: #cdc1b4;
+}
+
+.dev {
+  margin-left: 33%;
+}
+
+.dev2 {
+  color: red;
+  font-size: 15px;
+  color: white;
+  background: #bbada0;
+  padding: 10px;
+  margin-right: 35.5%;
+  float: right;
+}
+
+.margin-span {
+  margin-top: 30px;
+  margin-down: 15px;
+}
+
+.but {
+  color: red;
+  font-size: 15px;
+  color: white;
+  background: #8f7a66;
+  text-decoration: none;
+  border: none;
+  padding: 10px;
+}
+
+.text {
+  margin-left: 35%;
+  margin-right: 38%;
+  font-size: 15px;
+  margin-top: 30px;
+  font-family: "Helvetica";
+  text-align: center;
+  color: #bbada0;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  background: #8f7a66;
+}
+
+body {
+  background-color: #faf8ef;
+}
+
+
