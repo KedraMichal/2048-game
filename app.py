@@ -7,16 +7,14 @@ import keyboard
 
 
 app = Flask(__name__)
-score = 0
 
 
 @app.route('/')
 @app.route('/main')
 def main():
-    global score
-    score = 0
     global board
-    board = ga.generate_start_board()
+    global score
+    board, score = ga.generate_start_board(), 0
 
     return render_template('main.html', board=board, continue_game=False, score=score)
 
@@ -25,6 +23,8 @@ def main():
 def move():
     if ga.check_if_game_is_over(board) is True:
         return render_template('main.html', board=board, continue_game=False, score=score, gameover="Game over!")
+    if ga.check_if_game_is_won(board) is True:
+        return render_template('main.html', board=board, score=score, gameover="You won the game!")
 
     return render_template('main.html', board=board, continue_game=True, score=score)
 
@@ -62,10 +62,11 @@ def key_press_handler():
         if actual_board != board:
             score += 10
             ga.random_spawn(board)
-            time.sleep(0.4)
+            time.sleep(0.3)
 
 
 if __name__ == "__main__":
+    board, score = ga.generate_start_board(), 0
     thread1 = threading.Thread(target=key_press_handler)
     thread2 = threading.Thread(target=app.run)
     thread1.start()

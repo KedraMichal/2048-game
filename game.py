@@ -5,8 +5,6 @@ import copy
 def generate_start_board():
     random_x, random_y = random.randint(0, 3), random.randint(0, 3)
     random_x2, random_y2 = random.randint(0, 3), random.randint(0, 3)
-    print(random_x, random_y)
-    print(random_x2, random_y2)
     board = [4 * [0] for _ in range(4)]
     board[random_x][random_y], board[random_x2][random_y2] = 2, 2
 
@@ -56,7 +54,7 @@ def reverse_board(board):
 
 def transpose_board(board):
     for i in range(len(board)):
-        for j in range(i+1, len(board)):
+        for j in range(i + 1, len(board)):
             board[i][j], board[j][i] = board[j][i], board[i][j]
 
 
@@ -91,7 +89,7 @@ def random_spawn(board):
         x, y = random.choice(places_with_null)
         board[x][y] = 2
     else:
-        return False  # game over
+        return False
 
 
 def check_if_game_is_over(board):
@@ -103,3 +101,8 @@ def check_if_game_is_over(board):
         return True
     return False
 
+
+def check_if_game_is_won(board):
+    if 2048 in [item for sublist in board for item in sublist]:
+        return True
+    return False

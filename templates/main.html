@@ -1,87 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
 
-table, th, td {
-  margin-left:33%;
-  margin-right:auto;
-  border:3px;
-  border-style: solid;
-}
-
-table {
-   background-color: #bbada0;
-   border-color: #bbada0;
-}
-th {
-    width: 30px;
-}
-
-td, th {
-  font-family: "Helvetica";
-  font-size: 30px;
-  color: #776e65;
-  background-color: #eee4da;
-  border-color: #bbada0;
-  padding: 30px;
-}
-
-.dev {
-  margin-left: 33%;
-
-}
-
-.dev2 {
-  color: red;
-  font-size: 15px;
-  color: white;
-  background: #bbada0;
-  padding: 10px;
-  margin-right: 35.5%;
-  float:right
-}
-
-.margin-span {
-  margin-top: 30px;
-  margin-down: 15px;
-}
-
-.but {
-  color: red;
-  font-size: 15px;
-  color: white;
-  background: #8f7a66;
-  text-decoration: none;
-  border: none;
-  padding: 10px;
-}
-
-.text {
-  margin-left: 35%;
-  margin-right: 38%;
-  font-size: 15px;
-  margin-top: 30px;
-  font-family: "Helvetica";
-  text-align:center;
-  color: #bbada0;
-}
-
-a {
-  text-decoration: none;
-  color: white;
-  background: #8f7a66;
-}
-
-    </style>
 </head>
-<body style="background:#faf8ef">
+<body>
 
-
-{% if continue_game == true %}
-    <meta http-equiv="refresh" content="0.3" />
+{% if continue_game == True %}
+    <meta http-equiv="refresh" content="0.25" />
 {% endif %}
 
 <div class="margin-span">
@@ -95,11 +23,32 @@ a {
 </div>
 
 <p class="text" >{{ gameover }}</p>
+
 <table> 
-    {% for item in board %}
+    {% for sublist in board %}
     <tr>
-        {% for i in item %}
-        <th>{{ i }}</th>
+        {% for i in sublist %}
+            {% if i == 0 %}
+                <th class="zero">{{ i }}</th>
+            {% elif i == 2 %}
+                <th class="two">{{ i }}</th>
+            {% elif i == 4 %}
+                <th class="four">{{ i }}</th>
+            {% elif i == 8 %}
+                <th class="eight">{{ i }}</th>
+            {% elif i == 16 %}
+                <th class="sixteen">{{ i }}</th>
+            {% elif i == 32 %}
+                <th class="thirty-two">{{ i }}</th>
+            {% elif i == 64 %}
+                <th class="sixty-four">{{ i }}</th>
+            {% elif i == 128 %}
+                <th class="one-hundred-twenty-eight">{{ i }}</th>
+            {% elif i == 256 %}
+                <th class="two-hundred-fifty-six">{{ i }}</th>
+            {% else %}
+                <th class="four">{{ i }}</th>
+            {% endif %}
         {% endfor %}
     <tr>
     {% endfor %}
